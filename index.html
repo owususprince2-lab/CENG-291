@@ -1,0 +1,825 @@
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Document</title>
+      </head>
+
+      <body>
+          <p>&lt;!DOCTYPE html&gt;</p>
+          <p>&lt;html lang="en"&gt;</p>
+          <p> &lt;head&gt;</p>
+          <p> &lt;meta charset="UTF-8" /&gt;</p>
+          <p> &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;</p>
+          <p> &lt;title&gt;CENG 291 Quiz&lt;/title&gt;</p>
+          <p> &lt;script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"&gt;&lt;/script&gt;</p>
+          <p> &lt;script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"&gt;&lt;/script&gt;</p>
+          <p> &lt;script src="https://unpkg.com/@babel/standalone/babel.min.js"&gt;&lt;/script&gt;</p>
+          <p> &lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p>
+          <p> &lt;/head&gt;</p>
+          <p> &lt;body&gt;</p>
+          <p> &lt;div id="root"&gt;&lt;/div&gt;</p>
+          <p> </p>
+          <p> &lt;script type="text/babel"&gt;</p>
+          <p> const { useState, useEffect } = React;</p>
+          <p> </p>
+          <p> // Lucide React icons as inline SVG components</p>
+          <p> const AlertCircle = ({ className }) =&gt; (</p>
+          <p> &lt;svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor"&gt;</p>
+          <p> &lt;circle cx="12" cy="12" r="10" /&gt;</p>
+          <p> &lt;line x1="12" y1="8" x2="12" y2="12" /&gt;</p>
+          <p> &lt;line x1="12" y1="16" x2="12.01" y2="16" /&gt;</p>
+          <p> &lt;/svg&gt;</p>
+          <p> );</p>
+          <p> </p>
+          <p> const Lock = ({ className }) =&gt; (</p>
+          <p> &lt;svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor"&gt;</p>
+          <p> &lt;rect x="3" y="11" width="18" height="11" rx="2" ry="2" /&gt;</p>
+          <p> &lt;path d="M7 11V7a5 5 0 0 1 10 0v4" /&gt;</p>
+          <p> &lt;/svg&gt;</p>
+          <p> );</p>
+          <p> </p>
+          <p> const CheckCircle = ({ className }) =&gt; (</p>
+          <p> &lt;svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor"&gt;</p>
+          <p> &lt;path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /&gt;</p>
+          <p> &lt;polyline points="22 4 12 14.01 9 11.01" /&gt;</p>
+          <p> &lt;/svg&gt;</p>
+          <p> );</p>
+          <p> </p>
+          <p> const Timer = ({ className }) =&gt; (</p>
+          <p> &lt;svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor"&gt;</p>
+          <p> &lt;circle cx="12" cy="12" r="10" /&gt;</p>
+          <p> &lt;polyline points="12 6 12 12 16 14" /&gt;</p>
+          <p> &lt;/svg&gt;</p>
+          <p> );</p>
+          <p> const QuizApp = () =&gt; {</p>
+          <p> const [view, setView] = useState("start");</p>
+          <p> const [programme, setProgramme] = useState("");</p>
+          <p> const [studentName, setStudentName] = useState("");</p>
+          <p> const [indexNumber, setIndexNumber] = useState("");</p>
+          <p> const [currentQuestion, setCurrentQuestion] = useState(0);</p>
+          <p> const [answers, setAnswers] = useState({});</p>
+          <p> const [questionTimeLeft, setQuestionTimeLeft] = useState(20);</p>
+          <p> const [tabSwitches, setTabSwitches] = useState(0);</p>
+          <p> const [quizSubmitted, setQuizSubmitted] = useState(false);</p>
+          <p> const [adminPassword, setAdminPassword] = useState("");</p>
+          <p> const [showAdminLogin, setShowAdminLogin] = useState(false);</p>
+          <p> const questions = [</p>
+          <p> {</p>
+          <p> id: 1,</p>
+          <p> type: "mcq",</p>
+          <p> question: "Utilitarianism judges right conduct primarily by:",</p>
+          <p> options: [</p>
+          <p> "Compliance with professional engineering codes",</p>
+          <p> "Respect for individual liberty rights",</p>
+          <p> "Maximization of good consequences for all affected",</p>
+          <p> "Adherence to moral duties without exception",</p>
+          <p> ],</p>
+          <p> correctAnswer: "Maximization of good consequences for all affected",</p>
+          <p> },</p>
+          <p> {</p>
+          <p> id: 2,</p>
+          <p> type: "mcq",</p>
+          <p> question: "Which option BEST reflects Mill's view of what constitutes \"good\" under utilitarianism?",</p>
+          <p> options: [</p>
+          <p> "Any action that follows accepted moral rules",</p>
+          <p> "Happiness as an intrinsic good",</p>
+          <p> "Activities that lead to welfare rights",</p>
+          <p> "Duties that promote autonomy",</p>
+          <p> ],</p>
+          <p> correctAnswer: "Happiness as an intrinsic good",</p>
+          <p> },</p>
+          <p> {</p>
+          <p> id: 3,</p>
+          <p> type: "mcq",</p>
+          <p> question: "Intrinsic good differs from instrumental good because intrinsic good:",</p>
+          <p> options: [</p>
+          <p> "Produces beneficial consequences through rules",</p>
+          <p> "Is valuable in itself, not as a means",</p>
+          <p> "Depends on social acceptance",</p>
+          <p> "Requires legal enforcement to be moral",</p>
+          <p> ],</p>
+          <p> correctAnswer: "Is valuable in itself, not as a means",</p>
+          <p> },</p>
+          <p> {</p>
+          <p> id: 4,</p>
+          <p> type: "mcq",</p>
+          <p> question: "An engineer breaks a company rule to prevent widespread system failure that could harm thousands. Which ethical theory MOST directly supports this action?",</p>
+          <p> options: [</p>
+          <p> "Rule utilitarianism",</p>
+          <p> "Duty ethics (absolutist)",</p>
+          <p> "Act utilitarianism",</p>
+          <p> "Rights ethics",</p>
+          <p> ],</p>
+          <p> correctAnswer: "Act utilitarianism",</p>
+          <p> },</p>
+          <p> {</p>
+          <p> id: 5,</p>
+          <p> type: "mcq",</p>
+          <p> question: "Rule utilitarianism was introduced mainly to address which weakness of act utilitarianism?",</p>
+          <p> options: [</p>
+          <p> "Its disregard for welfare rights",</p>
+          <p> "Its tendency to ignore professional loyalty",</p>
+          <p> "Its potential to justify frequent rule-breaking",</p>
+          <p> "Its failure to define intrinsic good",</p>
+          <p> ],</p>
+          <p> correctAnswer: "Its potential to justify frequent rule-breaking",</p>
+          <p> },</p>
+          <p> {</p>
+          <p> id: 6,</p>
+          <p> type: "mcq",</p>
+          <p> question: "Which pairing is MOST accurate?",</p>
+          <p> options: [</p>
+          <p> "Liberty rights → entitlement to basic welfare benefits",</p>
+          <p> "Welfare rights → freedom from interference",</p>
+          <p> "Liberty rights → others' duty not to interfere",</p>
+          <p> "Welfare rights → unconditional moral absolutes",</p>
+          <p> ],</p>
+          <p> correctAnswer: "Liberty rights → others' duty not to interfere",</p>
+          <p> },</p>
+          <p> {</p>
+          <p> id: 7,</p>
+          <p> type: "mcq",</p>
+          <p> question: "An engineer discovers that reporting a minor defect will delay a public project, affecting thousands, but hiding it risks long-term safety. Under rule utilitarianism, the MOST ethical action is to:",</p>
+          <p> options: [</p>
+          <p> "Hide the defect",</p>
+          <p> "Report the defect",</p>
+          <p> "Decide based on personal loyalty to the company",</p>
+          <p> "Weigh duties without prioritizing rules",</p>
+          <p> ],</p>
+          <p> correctAnswer: "Report the defect",</p>
+          <p> },</p>
+          <p> {</p>
+          <p> id: 8,</p>
+          <p> type: "mcq",</p>
+          <p> question: "A factory machine is labeled unsafe because it exposes workers to a high chance of injury. According to the risk concept, the machine is unsafe mainly due to:",</p>
+          <p> options: [</p>
+          <p> "Poor user training",</p>
+          <p> "Unacceptable potential for harm",</p>
+          <p> "Lack of warning signs",</p>
+          <p> "High maintenance cost",</p>
+          <p> ],</p>
+          <p> correctAnswer: "Unacceptable potential for harm",</p>
+          <p> },</p>
+          <p> {</p>
+          <p> id: 9,</p>
+          <p> type: "mcq",</p>
+          <p> question: "Which ethical framework places the GREATEST emphasis on character traits such as honesty, competence, and humility rather than rules or outcomes?",</p>
+          <p> options: [</p>
+          <p> "Duty ethics",</p>
+          <p> "Rights ethics",</p>
+          <p> "Virtue ethics",</p>
+          <p> "Self-interest ethics",</p>
+          <p> ],</p>
+          <p> correctAnswer: "Virtue ethics",</p>
+          <p> },</p>
+          <p> {</p>
+          <p> id: 10,</p>
+          <p> type: "mcq",</p>
+          <p> question: "A community rejects treated drinking water after hearing that chemicals in it are \"deadly,\" despite scientific evidence of safety. This situation BEST represents:",</p>
+          <p> options: [</p>
+          <p> "Making no value judgment about safety",</p>
+          <p> "Underestimating risk due to familiarity",</p>
+          <p> "Overestimating risk without evidence",</p>
+          <p> "Acceptable risk assessment",</p>
+          <p> ],</p>
+          <p> correctAnswer: "Overestimating risk without evidence",</p>
+          <p> },</p>
+          <p> ];</p>
+          <p> const ADMIN_PASSWORD = "admin123";</p>
+          <p> const TIME_PER_QUESTION = 20;</p>
+          <p> const TAB_SWITCH_PENALTY = 0.5;</p>
+          <p> useEffect(() =&gt; {</p>
+          <p> if (view === "quiz") {</p>
+          <p> const handleContextMenu = (e) =&gt; e.preventDefault();</p>
+          <p> document.addEventListener("contextmenu", handleContextMenu);</p>
+          <p> document.body.style.userSelect = "none";</p>
+          <p> document.body.style.webkitUserSelect = "none";</p>
+          <p> const handleVisibilityChange = () =&gt; {</p>
+          <p> if (document.hidden) {</p>
+          <p> setTabSwitches((prev) =&gt; prev + 1);</p>
+          <p> }</p>
+          <p> };</p>
+          <p> document.addEventListener("visibilitychange", handleVisibilityChange);</p>
+          <p> const handleCopy = (e) =&gt; e.preventDefault();</p>
+          <p> document.addEventListener("copy", handleCopy);</p>
+          <p> document.addEventListener("cut", handleCopy);</p>
+          <p> document.addEventListener("paste", handleCopy);</p>
+          <p> return () =&gt; {</p>
+          <p> document.removeEventListener("contextmenu", handleContextMenu);</p>
+          <p> document.removeEventListener(</p>
+          <p> "visibilitychange",</p>
+          <p> handleVisibilityChange</p>
+          <p> );</p>
+          <p> document.removeEventListener("copy", handleCopy);</p>
+          <p> document.removeEventListener("cut", handleCopy);</p>
+          <p> document.removeEventListener("paste", handleCopy);</p>
+          <p> document.body.style.userSelect = "auto";</p>
+          <p> document.body.style.webkitUserSelect = "auto";</p>
+          <p> };</p>
+          <p> }</p>
+          <p> }, [view]);</p>
+          <p> useEffect(() =&gt; {</p>
+          <p> if (view === "quiz" &amp;&amp; questionTimeLeft &gt; 0) {</p>
+          <p> const timer = setTimeout(() =&gt; {</p>
+          <p> setQuestionTimeLeft((prev) =&gt; prev - 1);</p>
+          <p> }, 1000);</p>
+          <p> return () =&gt; clearTimeout(timer);</p>
+          <p> } else if (view === "quiz" &amp;&amp; questionTimeLeft === 0) {</p>
+          <p> handleAutoNext();</p>
+          <p> }</p>
+          <p> }, [view, questionTimeLeft]);</p>
+          <p> const handleAutoNext = () =&gt; {</p>
+          <p> if (currentQuestion &lt; questions.length - 1) {</p>
+          <p> setCurrentQuestion((prev) =&gt; prev + 1);</p>
+          <p> setQuestionTimeLeft(TIME_PER_QUESTION);</p>
+          <p> } else {</p>
+          <p> handleSubmitQuiz();</p>
+          <p> }</p>
+          <p> };</p>
+          <p> const handleStartQuiz = async () =&gt; {</p>
+          <p> if (!programme || !studentName.trim() || !indexNumber.trim()) {</p>
+          <p> alert("Please select your programme and enter your name and index number");</p>
+          <p> return;</p>
+          <p> }</p>
+          <p> const startButton = document.querySelector("button");</p>
+          <p> if (startButton) startButton.disabled = true;</p>
+          <p> try {</p>
+          <p> const GOOGLE_SCRIPT_URL =</p>
+          <p> "https://script.google.com/macros/s/AKfycbzQ49ebOvpIuttMBXh7gkCRU857mK6T0Hr3v4yiEisPzHjwHdaPFyD744kWGVu81KymqA/exec";</p>
+          <p> const response = await fetch(`${GOOGLE_SCRIPT_URL}?programme=${programme}`);</p>
+          <p> const data = await response.json();</p>
+          <p> const alreadyTaken = data.some((record) =&gt; {</p>
+          <p> const recordIndex = String(record.indexNumber).trim();</p>
+          <p> const inputIndex = String(indexNumber).trim();</p>
+          <p> return recordIndex === inputIndex;</p>
+          <p> });</p>
+          <p> if (alreadyTaken) {</p>
+          <p> alert(</p>
+          <p> "This index number has already been used to take the quiz. You cannot take the quiz again."</p>
+          <p> );</p>
+          <p> if (startButton) startButton.disabled = false;</p>
+          <p> return;</p>
+          <p> }</p>
+          <p> setView("quiz");</p>
+          <p> setQuestionTimeLeft(TIME_PER_QUESTION);</p>
+          <p> } catch (error) {</p>
+          <p> console.error("Error checking index number:", error);</p>
+          <p> alert(</p>
+          <p> "Error checking records. Please try again or contact your instructor."</p>
+          <p> );</p>
+          <p> if (startButton) startButton.disabled = false;</p>
+          <p> }</p>
+          <p> };</p>
+          <p> const handleAnswerChange = (questionId, answer) =&gt; {</p>
+          <p> setAnswers((prev) =&gt; ({</p>
+          <p> ...prev,</p>
+          <p> [questionId]: answer,</p>
+          <p> }));</p>
+          <p> };</p>
+          <p> const calculateScore = () =&gt; {</p>
+          <p> let correct = 0;</p>
+          <p> questions.forEach((q) =&gt; {</p>
+          <p> const studentAnswer = answers[q.id];</p>
+          <p> if (studentAnswer === q.correctAnswer) {</p>
+          <p> correct++;</p>
+          <p> }</p>
+          <p> });</p>
+          <p> const tabPenalty = tabSwitches * TAB_SWITCH_PENALTY;</p>
+          <p> const finalScore = Math.max(0, correct - tabPenalty);</p>
+          <p> return {</p>
+          <p> rawScore: correct,</p>
+          <p> tabPenalty,</p>
+          <p> finalScore,</p>
+          <p> };</p>
+          <p> };</p>
+          <p> const handleSubmitQuiz = async () =&gt; {</p>
+          <p> if (quizSubmitted) return;</p>
+          <p> const { rawScore, tabPenalty, finalScore } = calculateScore();</p>
+          <p> const totalQuestions = questions.length;</p>
+          <p> const percentage = ((finalScore / totalQuestions) * 100).toFixed(1);</p>
+          <p> const result = {</p>
+          <p> studentName,</p>
+          <p> indexNumber,</p>
+          <p> programme,</p>
+          <p> rawScore,</p>
+          <p> tabSwitches,</p>
+          <p> tabPenalty,</p>
+          <p> finalScore,</p>
+          <p> totalQuestions,</p>
+          <p> percentage,</p>
+          <p> timestamp: new Date().toLocaleString(),</p>
+          <p> };</p>
+          <p> setQuizSubmitted(true);</p>
+          <p> try {</p>
+          <p> const GOOGLE_SCRIPT_URL =</p>
+          <p> "https://script.google.com/macros/s/AKfycbzQ49ebOvpIuttMBXh7gkCRU857mK6T0Hr3v4yiEisPzHjwHdaPFyD744kWGVu81KymqA/exec";</p>
+          <p> await fetch(GOOGLE_SCRIPT_URL, {</p>
+          <p> method: "POST",</p>
+          <p> mode: "no-cors",</p>
+          <p> headers: {</p>
+          <p> "Content-Type": "application/json",</p>
+          <p> },</p>
+          <p> body: JSON.stringify(result),</p>
+          <p> });</p>
+          <p> console.log("Results submitted successfully");</p>
+          <p> } catch (error) {</p>
+          <p> console.error("Error submitting results:", error);</p>
+          <p> }</p>
+          <p> setView("thankyou");</p>
+          <p> };</p>
+          <p> const handleAdminLogin = () =&gt; {</p>
+          <p> if (adminPassword === ADMIN_PASSWORD) {</p>
+          <p> setView("admin");</p>
+          <p> } else {</p>
+          <p> alert("Incorrect password");</p>
+          <p> }</p>
+          <p> };</p>
+          <p> const AdminView = () =&gt; {</p>
+          <p> const [results, setResults] = useState([]);</p>
+          <p> const [loading, setLoading] = useState(true);</p>
+          <p> const [selectedProg, setSelectedProg] = useState("materials");</p>
+          <p> useEffect(() =&gt; {</p>
+          <p> loadResultsFromSheets();</p>
+          <p> }, [selectedProg]);</p>
+          <p> const loadResultsFromSheets = async () =&gt; {</p>
+          <p> setLoading(true);</p>
+          <p> try {</p>
+          <p> const GOOGLE_SCRIPT_URL =</p>
+          <p> "https://script.google.com/macros/s/AKfycbzQ49ebOvpIuttMBXh7gkCRU857mK6T0Hr3v4yiEisPzHjwHdaPFyD744kWGVu81KymqA/exec";</p>
+          <p> const response = await fetch(`${GOOGLE_SCRIPT_URL}?programme=${selectedProg}`);</p>
+          <p> const data = await response.json();</p>
+          <p> setResults(data);</p>
+          <p> setLoading(false);</p>
+          <p> } catch (error) {</p>
+          <p> console.error("Error loading results:", error);</p>
+          <p> setLoading(false);</p>
+          <p> }</p>
+          <p> };</p>
+          <p> const calculateStats = () =&gt; {</p>
+          <p> if (results.length === 0)</p>
+          <p> return { highest: 0, average: 0, lowest: 0 };</p>
+          <p> const scores = results.map((r) =&gt; {</p>
+          <p> // Score is at column E (finalScore)</p>
+          <p> const scoreValue = r.finalScore;</p>
+          <p> const numericScore = typeof scoreValue === 'string' </p>
+          <p> ? parseFloat(scoreValue.split("/")[0]) </p>
+          <p> : parseFloat(scoreValue);</p>
+          <p> return numericScore;</p>
+          <p> });</p>
+          <p> const highest = Math.max(...scores);</p>
+          <p> const lowest = Math.min(...scores);</p>
+          <p> const average = (</p>
+          <p> scores.reduce((a, b) =&gt; a + b, 0) / scores.length</p>
+          <p> ).toFixed(1);</p>
+          <p> return { highest, lowest, average };</p>
+          <p> };</p>
+          <p> const stats = calculateStats();</p>
+          <p> return (</p>
+          <p> &lt;div className="min-h-screen bg-gray-50 p-6"&gt;</p>
+          <p> &lt;div className="max-w-7xl mx-auto"&gt;</p>
+          <p> &lt;div className="bg-white rounded-lg shadow-md p-6 mb-6"&gt;</p>
+          <p> &lt;div className="flex justify-between items-center mb-4"&gt;</p>
+          <p> &lt;h2 className="text-2xl font-bold"&gt;</p>
+          <p> Admin Dashboard - CENG 291 Quiz</p>
+          <p> &lt;/h2&gt;</p>
+          <p> &lt;div className="flex gap-2"&gt;</p>
+          <p> &lt;select</p>
+          <p> value={selectedProg}</p>
+          <p> onChange={(e) =&gt; setSelectedProg(e.target.value)}</p>
+          <p> className="px-4 py-2 border border-gray-300 rounded"</p>
+          <p> &gt;</p>
+          <p> &lt;option value="materials"&gt;Materials Engineering&lt;/option&gt;</p>
+          <p> &lt;option value="metallurgical"&gt;Metallurgical Engineering&lt;/option&gt;</p>
+          <p> &lt;/select&gt;</p>
+          <p> &lt;button</p>
+          <p> onClick={() =&gt; loadResultsFromSheets()}</p>
+          <p> className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"</p>
+          <p> &gt;</p>
+          <p> Refresh</p>
+          <p> &lt;/button&gt;</p>
+          <p> &lt;button</p>
+          <p> onClick={() =&gt; setView("start")}</p>
+          <p> className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"</p>
+          <p> &gt;</p>
+          <p> Exit Admin</p>
+          <p> &lt;/button&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> {loading ? (</p>
+          <p> &lt;p&gt;Loading results from Google Sheets...&lt;/p&gt;</p>
+          <p> ) : results.length === 0 ? (</p>
+          <p> &lt;p className="text-gray-500"&gt;No quiz submissions yet for {selectedProg === "materials" ? "Materials" : "Metallurgical"} Engineering.&lt;/p&gt;</p>
+          <p> ) : (</p>
+          <p> &lt;&gt;</p>
+          <p> &lt;div className="mb-4"&gt;</p>
+          <p> &lt;p className="text-lg font-semibold text-gray-700"&gt;</p>
+          <p> Viewing: {selectedProg === "materials" ? "Materials Engineering" : "Metallurgical Engineering"}</p>
+          <p> &lt;/p&gt;</p>
+          <p> &lt;p className="text-sm text-gray-500 mt-1"&gt;</p>
+          <p> Scores displayed from Column E (Final Score after penalties)</p>
+          <p> &lt;/p&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> &lt;div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6"&gt;</p>
+          <p> &lt;div className="bg-blue-50 rounded-lg p-4"&gt;</p>
+          <p> &lt;p className="text-sm text-blue-600 font-semibold mb-1"&gt;</p>
+          <p> Total Submissions</p>
+          <p> &lt;/p&gt;</p>
+          <p> &lt;p className="text-3xl font-bold text-blue-700"&gt;</p>
+          <p> {results.length}</p>
+          <p> &lt;/p&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> &lt;div className="bg-green-50 rounded-lg p-4"&gt;</p>
+          <p> &lt;p className="text-sm text-green-600 font-semibold mb-1"&gt;</p>
+          <p> Highest Score</p>
+          <p> &lt;/p&gt;</p>
+          <p> &lt;p className="text-3xl font-bold text-green-700"&gt;</p>
+          <p> {stats.highest}/10</p>
+          <p> &lt;/p&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> &lt;div className="bg-yellow-50 rounded-lg p-4"&gt;</p>
+          <p> &lt;p className="text-sm text-yellow-600 font-semibold mb-1"&gt;</p>
+          <p> Average Score</p>
+          <p> &lt;/p&gt;</p>
+          <p> &lt;p className="text-3xl font-bold text-yellow-700"&gt;</p>
+          <p> {stats.average}/10</p>
+          <p> &lt;/p&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> &lt;div className="bg-red-50 rounded-lg p-4"&gt;</p>
+          <p> &lt;p className="text-sm text-red-600 font-semibold mb-1"&gt;</p>
+          <p> Lowest Score</p>
+          <p> &lt;/p&gt;</p>
+          <p> &lt;p className="text-3xl font-bold text-red-700"&gt;</p>
+          <p> {stats.lowest}/10</p>
+          <p> &lt;/p&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> &lt;div className="mb-4"&gt;</p>
+          <p> &lt;p className="text-xs text-gray-500"&gt;</p>
+          <p> Data synced with Google Sheets | Each tab switch = -0.5</p>
+          <p> points penalty | Programme-specific sheets (Sheet1: Materials, Sheet2: Metallurgical)</p>
+          <p> &lt;/p&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> &lt;div className="overflow-x-auto"&gt;</p>
+          <p> &lt;table className="min-w-full divide-y divide-gray-200"&gt;</p>
+          <p> &lt;thead className="bg-gray-50"&gt;</p>
+          <p> &lt;tr&gt;</p>
+          <p> &lt;th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase"&gt;</p>
+          <p> #</p>
+          <p> &lt;/th&gt;</p>
+          <p> &lt;th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase"&gt;</p>
+          <p> Name</p>
+          <p> &lt;/th&gt;</p>
+          <p> &lt;th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase"&gt;</p>
+          <p> Index Number</p>
+          <p> &lt;/th&gt;</p>
+          <p> &lt;th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase"&gt;</p>
+          <p> Raw Score</p>
+          <p> &lt;/th&gt;</p>
+          <p> &lt;th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase"&gt;</p>
+          <p> Tab Switches</p>
+          <p> &lt;/th&gt;</p>
+          <p> &lt;th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase"&gt;</p>
+          <p> Penalty</p>
+          <p> &lt;/th&gt;</p>
+          <p> &lt;th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase"&gt;</p>
+          <p> Final Score (Col E)</p>
+          <p> &lt;/th&gt;</p>
+          <p> &lt;th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase"&gt;</p>
+          <p> Percentage</p>
+          <p> &lt;/th&gt;</p>
+          <p> &lt;th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase"&gt;</p>
+          <p> Timestamp</p>
+          <p> &lt;/th&gt;</p>
+          <p> &lt;/tr&gt;</p>
+          <p> &lt;/thead&gt;</p>
+          <p> &lt;tbody className="bg-white divide-y divide-gray-200"&gt;</p>
+          <p> {results.map((result, idx) =&gt; (</p>
+          <p> &lt;tr key={idx}&gt;</p>
+          <p> &lt;td className="px-4 py-4 whitespace-nowrap text-sm font-semibold text-gray-600"&gt;</p>
+          <p> {idx + 1}</p>
+          <p> &lt;/td&gt;</p>
+          <p> &lt;td className="px-4 py-4 whitespace-nowrap text-sm"&gt;</p>
+          <p> {result.studentName}</p>
+          <p> &lt;/td&gt;</p>
+          <p> &lt;td className="px-4 py-4 whitespace-nowrap text-sm"&gt;</p>
+          <p> {result.indexNumber}</p>
+          <p> &lt;/td&gt;</p>
+          <p> &lt;td className="px-4 py-4 whitespace-nowrap text-sm font-semibold"&gt;</p>
+          <p> {result.rawScore}</p>
+          <p> &lt;/td&gt;</p>
+          <p> &lt;td className="px-4 py-4 whitespace-nowrap text-sm"&gt;</p>
+          <p> {result.tabSwitches}</p>
+          <p> &lt;/td&gt;</p>
+          <p> &lt;td className="px-4 py-4 whitespace-nowrap text-sm text-red-600"&gt;</p>
+          <p> {result.tabPenalty}</p>
+          <p> &lt;/td&gt;</p>
+          <p> &lt;td className="px-4 py-4 whitespace-nowrap text-sm"&gt;</p>
+          <p> &lt;span className="font-bold text-indigo-600"&gt;</p>
+          <p> {result.finalScore}</p>
+          <p> &lt;/span&gt;</p>
+          <p> &lt;/td&gt;</p>
+          <p> &lt;td className="px-4 py-4 whitespace-nowrap"&gt;</p>
+          <p> &lt;span className="px-2 py-1 rounded text-sm font-semibold bg-gray-100 text-gray-800"&gt;</p>
+          <p> {result.percentage}%</p>
+          <p> &lt;/span&gt;</p>
+          <p> &lt;/td&gt;</p>
+          <p> &lt;td className="px-4 py-4 whitespace-nowrap text-xs text-gray-500"&gt;</p>
+          <p> {result.timestamp}</p>
+          <p> &lt;/td&gt;</p>
+          <p> &lt;/tr&gt;</p>
+          <p> ))}</p>
+          <p> &lt;/tbody&gt;</p>
+          <p> &lt;/table&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> &lt;/&gt;</p>
+          <p> )}</p>
+          <p> &lt;/div&gt;</p>
+          <p> &lt;div className="text-center mt-6"&gt;</p>
+          <p> &lt;p className="text-sm text-gray-500"&gt;©Team Benny&lt;/p&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> );</p>
+          <p> };</p>
+          <p> if (view === "admin") {</p>
+          <p> return &lt;AdminView /&gt;;</p>
+          <p> }</p>
+          <p> if (view === "start") {</p>
+          <p> return (</p>
+          <p> &lt;div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4"&gt;</p>
+          <p> &lt;div className="max-w-md w-full"&gt;</p>
+          <p> &lt;div className="bg-white rounded-lg shadow-xl p-8"&gt;</p>
+          <p> &lt;div className="text-center mb-6"&gt;</p>
+          <p> &lt;Lock className="mx-auto h-12 w-12 text-indigo-600 mb-3" /&gt;</p>
+          <p> &lt;h1 className="text-3xl font-bold text-gray-800 mb-2"&gt;</p>
+          <p> CENG 291 Quiz</p>
+          <p> &lt;/h1&gt;</p>
+          <p> &lt;p className="text-gray-600"&gt;Engineering Ethics&lt;/p&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> &lt;div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6"&gt;</p>
+          <p> &lt;div className="flex"&gt;</p>
+          <p> &lt;AlertCircle className="h-5 w-5 text-yellow-400 mr-2 flex-shrink-0" /&gt;</p>
+          <p> &lt;div className="text-sm text-yellow-700"&gt;</p>
+          <p> &lt;p className="font-semibold mb-1"&gt;Quiz Rules:&lt;/p&gt;</p>
+          <p> &lt;ul className="list-disc list-inside space-y-1"&gt;</p>
+          <p> &lt;li&gt;10 questions total&lt;/li&gt;</p>
+          <p> &lt;li&gt;20 seconds per question&lt;/li&gt;</p>
+          <p> &lt;li&gt;Auto-advances when time expires&lt;/li&gt;</p>
+          <p> &lt;li&gt;Tab switching: -0.5 points each&lt;/li&gt;</p>
+          <p> &lt;li&gt;Text selection disabled&lt;/li&gt;</p>
+          <p> &lt;li&gt;Right-click disabled&lt;/li&gt;</p>
+          <p> &lt;/ul&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> &lt;div className="space-y-4"&gt;</p>
+          <p> &lt;div&gt;</p>
+          <p> &lt;label className="block text-sm font-medium text-gray-700 mb-1"&gt;</p>
+          <p> Programme</p>
+          <p> &lt;/label&gt;</p>
+          <p> &lt;select</p>
+          <p> value={programme}</p>
+          <p> onChange={(e) =&gt; setProgramme(e.target.value)}</p>
+          <p> className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"</p>
+          <p> &gt;</p>
+          <p> &lt;option value=""&gt;Select your programme&lt;/option&gt;</p>
+          <p> &lt;option value="materials"&gt;Materials Engineering&lt;/option&gt;</p>
+          <p> &lt;option value="metallurgical"&gt;Metallurgical Engineering&lt;/option&gt;</p>
+          <p> &lt;/select&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> &lt;div&gt;</p>
+          <p> &lt;label className="block text-sm font-medium text-gray-700 mb-1"&gt;</p>
+          <p> Full Name</p>
+          <p> &lt;/label&gt;</p>
+          <p> &lt;input</p>
+          <p> type="text"</p>
+          <p> value={studentName}</p>
+          <p> onChange={(e) =&gt; setStudentName(e.target.value)}</p>
+          <p> className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"</p>
+          <p> placeholder="Enter your full name"</p>
+          <p> /&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> &lt;div&gt;</p>
+          <p> &lt;label className="block text-sm font-medium text-gray-700 mb-1"&gt;</p>
+          <p> Index Number</p>
+          <p> &lt;/label&gt;</p>
+          <p> &lt;input</p>
+          <p> type="text"</p>
+          <p> value={indexNumber}</p>
+          <p> onChange={(e) =&gt; setIndexNumber(e.target.value)}</p>
+          <p> className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"</p>
+          <p> placeholder="Enter your index number"</p>
+          <p> /&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> &lt;button</p>
+          <p> onClick={handleStartQuiz}</p>
+          <p> className="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition duration-200"</p>
+          <p> &gt;</p>
+          <p> Start Quiz</p>
+          <p> &lt;/button&gt;</p>
+          <p> &lt;button</p>
+          <p> onClick={() =&gt; setShowAdminLogin(!showAdminLogin)}</p>
+          <p> className="w-full text-sm text-gray-500 hover:text-gray-700 mt-4"</p>
+          <p> &gt;</p>
+          <p> {showAdminLogin ? "Hide Admin Login" : "Admin Login"}</p>
+          <p> &lt;/button&gt;</p>
+          <p> {showAdminLogin &amp;&amp; (</p>
+          <p> &lt;div className="mt-4 p-4 bg-gray-50 rounded-lg"&gt;</p>
+          <p> &lt;input</p>
+          <p> type="password"</p>
+          <p> value={adminPassword}</p>
+          <p> onChange={(e) =&gt; setAdminPassword(e.target.value)}</p>
+          <p> placeholder="Admin Password"</p>
+          <p> className="w-full px-4 py-2 border border-gray-300 rounded-lg mb-2"</p>
+          <p> /&gt;</p>
+          <p> &lt;button</p>
+          <p> onClick={handleAdminLogin}</p>
+          <p> className="w-full bg-gray-600 text-white py-2 rounded-lg hover:bg-gray-700"</p>
+          <p> &gt;</p>
+          <p> Login as Admin</p>
+          <p> &lt;/button&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> )}</p>
+          <p> &lt;/div&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> &lt;div className="text-center mt-6"&gt;</p>
+          <p> &lt;p className="text-sm text-gray-400"&gt;©Team Benny&lt;/p&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> );</p>
+          <p> }</p>
+          <p> if (view === "thankyou") {</p>
+          <p> return (</p>
+          <p> &lt;div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4"&gt;</p>
+          <p> &lt;div className="max-w-md w-full"&gt;</p>
+          <p> &lt;div className="bg-white rounded-lg shadow-xl p-8"&gt;</p>
+          <p> &lt;div className="text-center"&gt;</p>
+          <p> &lt;CheckCircle className="mx-auto h-16 w-16 text-green-500 mb-4" /&gt;</p>
+          <p> &lt;h2 className="text-3xl font-bold text-gray-800 mb-2"&gt;</p>
+          <p> Quiz Submitted Successfully!</p>
+          <p> &lt;/h2&gt;</p>
+          <p> &lt;p className="text-gray-600 mb-6"&gt;Thank you, {studentName}&lt;/p&gt;</p>
+          <p> &lt;div className="bg-blue-50 rounded-lg p-6 mb-6"&gt;</p>
+          <p> &lt;p className="text-gray-700 text-lg"&gt;</p>
+          <p> Your responses have been recorded and submitted to your</p>
+          <p> instructor.</p>
+          <p> &lt;/p&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> &lt;p className="text-sm text-gray-500"&gt;</p>
+          <p> Results will be shared by your instructor.</p>
+          <p> &lt;/p&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> &lt;div className="text-center mt-6"&gt;</p>
+          <p> &lt;p className="text-sm text-gray-400"&gt;©Team Benny&lt;/p&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> );</p>
+          <p> }</p>
+          <p> const question = questions[currentQuestion];</p>
+          <p> const progress = ((currentQuestion + 1) / questions.length) * 100;</p>
+          <p> const handleNext = () =&gt; {</p>
+          <p> if (currentQuestion &lt; questions.length - 1) {</p>
+          <p> setCurrentQuestion((prev) =&gt; prev + 1);</p>
+          <p> setQuestionTimeLeft(TIME_PER_QUESTION);</p>
+          <p> } else {</p>
+          <p> handleSubmitQuiz();</p>
+          <p> }</p>
+          <p> };</p>
+          <p> return (</p>
+          <p> &lt;div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4"&gt;</p>
+          <p> &lt;div className="max-w-3xl mx-auto"&gt;</p>
+          <p> &lt;div className="bg-white rounded-lg shadow-md p-4 mb-4"&gt;</p>
+          <p> &lt;div className="flex justify-between items-center mb-2"&gt;</p>
+          <p> &lt;div className="flex items-center space-x-4"&gt;</p>
+          <p> &lt;span className="text-sm font-semibold text-gray-700"&gt;</p>
+          <p> {studentName} ({indexNumber})</p>
+          <p> &lt;/span&gt;</p>
+          <p> &lt;span className="text-xs px-2 py-1 bg-indigo-100 text-indigo-800 rounded"&gt;</p>
+          <p> {programme === "materials" ? "Materials" : "Metallurgical"} Eng.</p>
+          <p> &lt;/span&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> &lt;div className="flex items-center space-x-3"&gt;</p>
+          <p> {tabSwitches &gt; 0 &amp;&amp; (</p>
+          <p> &lt;span className="text-sm text-red-600 font-semibold"&gt;</p>
+          <p> ⚠️ Switches: {tabSwitches} (-</p>
+          <p> {(tabSwitches * TAB_SWITCH_PENALTY).toFixed(1)})</p>
+          <p> &lt;/span&gt;</p>
+          <p> )}</p>
+          <p> &lt;div className="flex items-center space-x-2"&gt;</p>
+          <p> &lt;Timer</p>
+          <p> className={`h-5 w-5 ${</p>
+          <p> questionTimeLeft &lt;= 5 ? "text-red-600" : "text-indigo-600"</p>
+          <p> }`}</p>
+          <p> /&gt;</p>
+          <p> &lt;span</p>
+          <p> className={`font-mono font-bold text-xl ${</p>
+          <p> questionTimeLeft &lt;= 5</p>
+          <p> ? "text-red-600 animate-pulse"</p>
+          <p> : "text-gray-700"</p>
+          <p> }`}</p>
+          <p> &gt;</p>
+          <p> {questionTimeLeft}s</p>
+          <p> &lt;/span&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> &lt;div className="flex justify-between text-sm text-gray-600 mb-2"&gt;</p>
+          <p> &lt;span&gt;</p>
+          <p> Question {currentQuestion + 1} of {questions.length}</p>
+          <p> &lt;/span&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> &lt;div className="w-full bg-gray-200 rounded-full h-2"&gt;</p>
+          <p> &lt;div</p>
+          <p> className="bg-indigo-600 h-2 rounded-full transition-all duration-300"</p>
+          <p> style={{ width: `${progress}%` }}</p>
+          <p> /&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> &lt;div className="bg-white rounded-lg shadow-md p-8"&gt;</p>
+          <p> &lt;h2 className="text-lg font-bold text-gray-800 mb-6 leading-relaxed"&gt;</p>
+          <p> {question.question}</p>
+          <p> &lt;/h2&gt;</p>
+          <p> &lt;div className="space-y-3"&gt;</p>
+          <p> {question.options.map((option, idx) =&gt; (</p>
+          <p> &lt;label</p>
+          <p> key={idx}</p>
+          <p> className="flex items-start p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-indigo-400 hover:bg-indigo-50 transition duration-200"</p>
+          <p> &gt;</p>
+          <p> &lt;input</p>
+          <p> type="radio"</p>
+          <p> name={`question-${question.id}`}</p>
+          <p> value={option}</p>
+          <p> checked={answers[question.id] === option}</p>
+          <p> onChange={(e) =&gt;</p>
+          <p> handleAnswerChange(question.id, e.target.value)</p>
+          <p> }</p>
+          <p> className="mt-1 mr-3 h-4 w-4 text-indigo-600 flex-shrink-0"</p>
+          <p> /&gt;</p>
+          <p> &lt;span className="text-gray-700"&gt;{option}&lt;/span&gt;</p>
+          <p> &lt;/label&gt;</p>
+          <p> ))}</p>
+          <p> &lt;/div&gt;</p>
+          <p> &lt;div className="flex justify-end mt-8"&gt;</p>
+          <p> &lt;button</p>
+          <p> onClick={handleNext}</p>
+          <p> className={`px-8 py-3 rounded-lg font-semibold ${</p>
+          <p> currentQuestion === questions.length - 1</p>
+          <p> ? "bg-green-600 hover:bg-green-700"</p>
+          <p> : "bg-indigo-600 hover:bg-indigo-700"</p>
+          <p> } text-white`}</p>
+          <p> &gt;</p>
+          <p> {currentQuestion === questions.length - 1</p>
+          <p> ? "Submit Quiz"</p>
+          <p> : "Next Question"}</p>
+          <p> &lt;/button&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> &lt;div className="text-center mt-6"&gt;</p>
+          <p> &lt;p className="text-sm text-gray-400"&gt;©Team Benny&lt;/p&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> &lt;/div&gt;</p>
+          <p> );</p>
+          <p> };</p>
+          <p> const root = ReactDOM.createRoot(document.getElementById('root'));</p>
+          <p> root.render(&lt;QuizApp /&gt;);</p>
+          <p> &lt;/script&gt;</p>
+          <p> &lt;/body&gt;</p>
+          <p>&lt;/html&gt;</p>
+      </body>
+      <style>
+          html{
+              background: #f8f8f8;
+              padding: 50px 200px;
+              width: 100%;
+              box-sizing: border-box;
+          }
+          body{
+              padding: 50px;
+              background: #fff;
+              width: 100%;
+              box-sizing: border-box;
+          }
+          img{
+              width: 100%;
+          }
+          li,a,p,strong {
+          word-wrap:break-word; 
+          }
+          
+          @media screen and (max-width: 1100px){
+          html{
+          padding: 0px;
+          }
+          body{
+          padding:0px
+          }
+      </style>
+
+      </html>
