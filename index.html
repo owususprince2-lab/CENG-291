@@ -15,7 +15,6 @@
     <script type="text/babel">
       const { useState, useEffect } = React;
       
-      // Lucide React icons as inline SVG components
       const AlertCircle = ({ className }) => (
         <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <circle cx="12" cy="12" r="10" />
@@ -62,140 +61,129 @@
           {
             id: 1,
             type: "mcq",
-            question: "Evaluate the role of \"Normalization of Deviance.\" It is an impediment to responsibility because:",
+            question: "Which statement best contrasts Utilitarianism with Respect for Persons?",
             options: [
-              "It encourages engineers to take more training",
-              "It accepts anomalies as \"acceptable risk\" because they haven't caused a failure yet",
-              "It strictly follows the \"Golden Mean\" between extremes",
-              "It ensures that everyone in the group agrees",
+              "Utilitarianism focuses on individual rights; Respect for Persons focuses on the majority",
+              "Utilitarianism seeks to maximize overall well-being; Respect for Persons protects individual moral agency",
+              "Utilitarianism is only for personal life; Respect for Persons is only for business",
+              "They are the same theory under different names",
             ],
-            correctAnswer: "It accepts anomalies as \"acceptable risk\" because they haven't caused a failure yet",
+            correctAnswer: "Utilitarianism seeks to maximize overall well-being; Respect for Persons protects individual moral agency",
           },
           {
             id: 2,
             type: "mcq",
-            question: "Using \"DeGeorge's Criteria,\" whistleblowing becomes morally obligatory when:",
+            question: "Ethical Egoism is a view that challenges standard ethical theories by claiming:",
             options: [
-              "The engineer has a \"gut feeling\" something is wrong",
-              "The engineer has documented evidence and strong evidence that going public will prevent serious harm",
-              "The supervisor is slightly rude",
-              "The company is not making enough profit",
+              "We should always act in the interest of the environment",
+              "Our only duty is to maximize our own good",
+              "We should always follow the commands of God",
+              "All moral values are relative to one's culture",
             ],
-            correctAnswer: "The engineer has documented evidence and strong evidence that going public will prevent serious harm",
+            correctAnswer: "Our only duty is to maximize our own good",
           },
           {
             id: 3,
             type: "mcq",
-            question: "How should an engineer resolve a conflict between \"Loyalty to Employer\" and \"Safety of the Public\"?",
+            question: "The Washington Accord is primarily focused on:",
             options: [
-              "Loyalty to the employer is always the first professional obligation",
-              "Public safety is \"paramount\" and must take precedence",
-              "The engineer should flip a coin to remain objective",
-              "They should follow the most senior manager's directive regardless of safety",
+              "Establishing international building codes for skyscrapers",
+              "Mutual recognition of engineering educational qualifications across different countries",
+              "Banning the use of chemical weapons globally",
+              "Regulating the sales of driverless cars in the US",
             ],
-            correctAnswer: "Public safety is \"paramount\" and must take precedence",
+            correctAnswer: "Mutual recognition of engineering educational qualifications across different countries",
           },
           {
             id: 4,
             type: "mcq",
-            question: "The \"Aberdeen Three\" case demonstrates that engineering managers can be held:",
+            question: "Which is a characteristic of Tight Coupling in a technological system?",
             options: [
-              "Responsible only if they personally handled toxic chemicals",
-              "Criminally liable for violations of hazardous waste laws within their area of responsibility",
-              "Immune from prosecution if they work for the Army",
-              "Liable only if their subordinates are incompetent",
+              "There is a lot of time to correct a failure before it spreads",
+              "Processes are connected such that a failure in one quickly affects another",
+              "It is very easy to predict all consequences of a failure",
+              "It is only found in small, non-complex machines",
             ],
-            correctAnswer: "Criminally liable for violations of hazardous waste laws within their area of responsibility",
+            correctAnswer: "Processes are connected such that a failure in one quickly affects another",
           },
           {
             id: 5,
             type: "mcq",
-            question: "In the context of international engineering, \"Weak Paternalism\" might be justified if:",
+            question: "In Standard Experiments, the group that does not receive the special experimental treatment is called the:",
             options: [
-              "The engineer wants to maximize their own personal profit",
-              "The recipient is making a bad decision because they are ignorant of technical consequences",
-              "The host country has no laws whatsoever",
-              "The engineer wants to avoid paying taxes",
+              "Variable group",
+              "Test group",
+              "Control group",
+              "Focus group",
             ],
-            correctAnswer: "The recipient is making a bad decision because they are ignorant of technical consequences",
+            correctAnswer: "Control group",
           },
           {
             id: 6,
             type: "mcq",
-            question: "If an engineer is asked to testify as an \"Expert Witness,\" their primary ethical obligation is to:",
+            question: "Using the Self-Defeating Test, an engineer decides not to fudge test data. Their reasoning is:",
             options: [
-              "Help their client win at all costs",
-              "Provide an objective and truthful opinion based on adequate knowledge",
-              "Only speak if they are paid a \"contingent fee\" based on the verdict",
-              "Protect the reputation of the engineering firm that hired them over the facts",
+              "If everyone fudged data, then data would become untrustworthy and the purpose of providing data would be undermined",
+              "My boss will fire me if I get caught fudging the data",
+              "It is cheaper to tell the truth in the long run due to litigation costs",
+              "I have a legal right to be honest under the Constitution",
             ],
-            correctAnswer: "Provide an objective and truthful opinion based on adequate knowledge",
+            correctAnswer: "If everyone fudged data, then data would become untrustworthy and the purpose of providing data would be undermined",
           },
           {
             id: 7,
             type: "mcq",
-            question: "According to the lecture, which of the following is an example of an \"Internal Responsibility\" for an engineer?",
+            question: "When evaluating Acceptable Risk, the layperson's approach often differs from the expert's because the layperson:",
             options: [
-              "Confidentiality",
-              "Conflict of Interest",
-              "Collegiality",
-              "Occupational Crimes",
+              "Ignores all scientific data and relies only on emotion",
+              "Values informed consent and the just distribution of risk",
+              "Only cares about the total number of statistically expected deaths",
+              "Always believes that zero risk is physically possible in every technology",
             ],
-            correctAnswer: "Collegiality",
+            correctAnswer: "Values informed consent and the just distribution of risk",
           },
           {
             id: 8,
             type: "mcq",
-            question: "Which term is defined as \"the quality of being true and faithful in one's support\"?",
+            question: "The Capabilities Approach to risk assessment is arguably superior to traditional methods because it:",
             options: [
-              "Responsibility",
-              "Loyalty",
-              "Connectedness",
-              "Authority",
+              "Is much faster to calculate than cost-benefit analysis",
+              "Focuses on the real freedom of individuals to achieve what they value rather than just focal harms",
+              "Excludes all psychological and social impacts to remain objective",
+              "Does not require any statistical data to reach a conclusion",
             ],
-            correctAnswer: "Loyalty",
+            correctAnswer: "Focuses on the real freedom of individuals to achieve what they value rather than just focal harms",
           },
           {
             id: 9,
             type: "mcq",
-            question: "What are the three specific elements of collegiality according to Craig Ihara?",
+            question: "How should an engineer resolve a conflict between a duty to their employer (Canon 4) and the safety of the public (Canon 1)?",
             options: [
-              "Respect, Commitment, and Connectedness",
-              "Honesty, Integrity, and Loyalty",
-              "Power, Authority, and Responsibility",
-              "Competence, Fun, and Good Conduct",
+              "The duty to the employer always takes precedence in a business setting",
+              "The safety of the public is \"paramount\" and must take precedence over the duty to the employer",
+              "They should flip a coin to remain unbiased and objective",
+              "They should follow the instructions of the most senior manager present to ensure organizational harmony",
             ],
-            correctAnswer: "Respect, Commitment, and Connectedness",
+            correctAnswer: "The safety of the public is \"paramount\" and must take precedence over the duty to the employer",
           },
           {
             id: 10,
             type: "mcq",
-            question: "\"Agency Loyalty\" is primarily concerned with:",
+            question: "From the perspective of Environmental Ethics, the Cradle to Cradle approach is defined by:",
             options: [
-              "Personal affection for an employer",
-              "Fulfilling prescribed duties to an employer",
-              "Identifying with the group's moral values",
-              "Publicly praising a corporation",
+              "Simply throwing away products once they reach their \"grave\" (the landfill)",
+              "Designing products so that all components can be upcycled or returned to the earth safely",
+              "Minimizing the cost of raw material extraction at the start of a project",
+              "Using the most advanced military technology to protect endangered forests",
             ],
-            correctAnswer: "Fulfilling prescribed duties to an employer",
-          },
-          {
-            id: 11,
-            type: "mcq",
-            question: "Which type of authority is defined as the possession of special knowledge, skills, or competencies to give sound advice?",
-            options: [
-              "Institutional Authority",
-              "Legal Authority",
-              "Expert Authority",
-              "Delegated Authority",
-            ],
-            correctAnswer: "Expert Authority",
+            correctAnswer: "Designing products so that all components can be upcycled or returned to the earth safely",
           },
         ];
 
         const ADMIN_PASSWORD = "admin123";
         const TIME_PER_QUESTION = 20;
         const TAB_SWITCH_PENALTY = 0.5;
+        const SHEET_NAME = "Sheet1";
 
         useEffect(() => {
           if (view === "quiz") {
@@ -219,10 +207,7 @@
 
             return () => {
               document.removeEventListener("contextmenu", handleContextMenu);
-              document.removeEventListener(
-                "visibilitychange",
-                handleVisibilityChange
-              );
+              document.removeEventListener("visibilitychange", handleVisibilityChange);
               document.removeEventListener("copy", handleCopy);
               document.removeEventListener("cut", handleCopy);
               document.removeEventListener("paste", handleCopy);
@@ -265,8 +250,7 @@
             const GOOGLE_SCRIPT_URL =
               "https://script.google.com/macros/s/AKfycbzQ49ebOvpIuttMBXh7gkCRU857mK6T0Hr3v4yiEisPzHjwHdaPFyD744kWGVu81KymqA/exec";
 
-            const sheetName = programme === "Materials Engineering" ? "Sheet1" : "Sheet2";
-            const response = await fetch(`${GOOGLE_SCRIPT_URL}?sheet=${sheetName}`);
+            const response = await fetch(`${GOOGLE_SCRIPT_URL}?sheet=${SHEET_NAME}`);
             const data = await response.json();
 
             const alreadyTaken = data.some((record) => {
@@ -346,9 +330,7 @@
             const GOOGLE_SCRIPT_URL =
               "https://script.google.com/macros/s/AKfycbzQ49ebOvpIuttMBXh7gkCRU857mK6T0Hr3v4yiEisPzHjwHdaPFyD744kWGVu81KymqA/exec";
 
-            const sheetName = programme === "Materials Engineering" ? "Sheet1" : "Sheet2";
-
-            await fetch(`${GOOGLE_SCRIPT_URL}?sheet=${sheetName}`, {
+            await fetch(`${GOOGLE_SCRIPT_URL}?sheet=${SHEET_NAME}`, {
               method: "POST",
               mode: "no-cors",
               headers: {
@@ -357,7 +339,7 @@
               body: JSON.stringify(result),
             });
 
-            console.log("Results submitted successfully");
+            console.log("Results submitted successfully to Sheet1");
           } catch (error) {
             console.error("Error submitting results:", error);
           }
@@ -376,11 +358,10 @@
         const AdminView = () => {
           const [results, setResults] = useState([]);
           const [loading, setLoading] = useState(true);
-          const [selectedSheet, setSelectedSheet] = useState("Sheet1");
 
           useEffect(() => {
             loadResultsFromSheets();
-          }, [selectedSheet]);
+          }, []);
 
           const loadResultsFromSheets = async () => {
             setLoading(true);
@@ -388,7 +369,7 @@
               const GOOGLE_SCRIPT_URL =
                 "https://script.google.com/macros/s/AKfycbzQ49ebOvpIuttMBXh7gkCRU857mK6T0Hr3v4yiEisPzHjwHdaPFyD744kWGVu81KymqA/exec";
 
-              const response = await fetch(`${GOOGLE_SCRIPT_URL}?sheet=${selectedSheet}`);
+              const response = await fetch(`${GOOGLE_SCRIPT_URL}?sheet=${SHEET_NAME}`);
               const data = await response.json();
 
               setResults(data);
@@ -419,7 +400,6 @@
           };
 
           const stats = calculateStats();
-          const programmeName = selectedSheet === "Sheet1" ? "Materials Engineering" : "Metallurgical Engineering";
 
           return (
             <div className="min-h-screen bg-gray-50 p-6">
@@ -430,14 +410,6 @@
                       Admin Dashboard - CENG 291 Quiz
                     </h2>
                     <div className="flex gap-2">
-                      <select
-                        value={selectedSheet}
-                        onChange={(e) => setSelectedSheet(e.target.value)}
-                        className="px-4 py-2 border border-gray-300 rounded"
-                      >
-                        <option value="Sheet1">Materials Engineering</option>
-                        <option value="Sheet2">Metallurgical Engineering</option>
-                      </select>
                       <button
                         onClick={() => loadResultsFromSheets()}
                         className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
@@ -456,12 +428,12 @@
                   {loading ? (
                     <p>Loading results from Google Sheets...</p>
                   ) : results.length === 0 ? (
-                    <p className="text-gray-500">No quiz submissions yet for {programmeName}.</p>
+                    <p className="text-gray-500">No quiz submissions yet.</p>
                   ) : (
                     <>
                       <div className="mb-4">
                         <p className="text-lg font-semibold text-gray-700">
-                          {programmeName}
+                          All Submissions (Sheet1)
                         </p>
                       </div>
 
@@ -502,8 +474,7 @@
 
                       <div className="mb-4">
                         <p className="text-xs text-gray-500">
-                          Data synced with Google Sheets ({selectedSheet}) | Each tab switch = -0.5
-                          points penalty
+                          Data synced with Google Sheets (Sheet1) | Each tab switch = -0.5 points penalty
                         </p>
                       </div>
 
@@ -511,75 +482,35 @@
                         <table className="min-w-full divide-y divide-gray-200">
                           <thead className="bg-gray-50">
                             <tr>
-                              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                                #
-                              </th>
-                              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                                Name
-                              </th>
-                              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                                Index Number
-                              </th>
-                              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                                Programme
-                              </th>
-                              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                                Raw Score
-                              </th>
-                              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                                Tab Switches
-                              </th>
-                              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                                Penalty
-                              </th>
-                              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                                Final Score
-                              </th>
-                              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                                Percentage
-                              </th>
-                              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                                Timestamp
-                              </th>
+                              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">#</th>
+                              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Name</th>
+                              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Index Number</th>
+                              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Programme</th>
+                              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Raw Score</th>
+                              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Tab Switches</th>
+                              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Penalty</th>
+                              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Final Score</th>
+                              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Percentage</th>
+                              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Timestamp</th>
                             </tr>
                           </thead>
                           <tbody className="bg-white divide-y divide-gray-200">
                             {results.map((result, idx) => (
                               <tr key={idx}>
-                                <td className="px-4 py-4 whitespace-nowrap text-sm font-semibold text-gray-600">
-                                  {idx + 1}
-                                </td>
+                                <td className="px-4 py-4 whitespace-nowrap text-sm font-semibold text-gray-600">{idx + 1}</td>
+                                <td className="px-4 py-4 whitespace-nowrap text-sm">{result.studentName}</td>
+                                <td className="px-4 py-4 whitespace-nowrap text-sm">{result.indexNumber}</td>
+                                <td className="px-4 py-4 whitespace-nowrap text-sm">{result.programme}</td>
+                                <td className="px-4 py-4 whitespace-nowrap text-sm font-semibold">{result.rawScore}</td>
+                                <td className="px-4 py-4 whitespace-nowrap text-sm">{result.tabSwitches}</td>
+                                <td className="px-4 py-4 whitespace-nowrap text-sm text-red-600">{result.tabPenalty}</td>
                                 <td className="px-4 py-4 whitespace-nowrap text-sm">
-                                  {result.studentName}
-                                </td>
-                                <td className="px-4 py-4 whitespace-nowrap text-sm">
-                                  {result.indexNumber}
-                                </td>
-                                <td className="px-4 py-4 whitespace-nowrap text-sm">
-                                  {result.programme}
-                                </td>
-                                <td className="px-4 py-4 whitespace-nowrap text-sm font-semibold">
-                                  {result.rawScore}
-                                </td>
-                                <td className="px-4 py-4 whitespace-nowrap text-sm">
-                                  {result.tabSwitches}
-                                </td>
-                                <td className="px-4 py-4 whitespace-nowrap text-sm text-red-600">
-                                  {result.tabPenalty}
-                                </td>
-                                <td className="px-4 py-4 whitespace-nowrap text-sm">
-                                  <span className="font-bold text-indigo-600">
-                                    {result.finalScore}
-                                  </span>
+                                  <span className="font-bold text-indigo-600">{result.finalScore}</span>
                                 </td>
                                 <td className="px-4 py-4 whitespace-nowrap">
-                                  <span className="px-2 py-1 rounded text-sm font-semibold bg-gray-100 text-gray-800">
-                                    {result.percentage}
-                                  </span>
+                                  <span className="px-2 py-1 rounded text-sm font-semibold bg-gray-100 text-gray-800">{result.percentage}</span>
                                 </td>
-                                <td className="px-4 py-4 whitespace-nowrap text-xs text-gray-500">
-                                  {result.timestamp}
-                                </td>
+                                <td className="px-4 py-4 whitespace-nowrap text-xs text-gray-500">{result.timestamp}</td>
                               </tr>
                             ))}
                           </tbody>
@@ -728,8 +659,7 @@
                     <p className="text-gray-600 mb-6">Thank you, {studentName}</p>
                     <div className="bg-blue-50 rounded-lg p-6 mb-6">
                       <p className="text-gray-700 text-lg">
-                        Your responses have been recorded and submitted to your
-                        instructor.
+                        Your responses have been recorded and submitted to your instructor.
                       </p>
                     </div>
                     <p className="text-sm text-gray-500">
@@ -774,22 +704,15 @@
                   <div className="flex items-center space-x-3">
                     {tabSwitches > 0 && (
                       <span className="text-sm text-red-600 font-semibold">
-                        ⚠️ Switches: {tabSwitches} (-
-                        {(tabSwitches * TAB_SWITCH_PENALTY).toFixed(1)})
+                        ⚠️ Switches: {tabSwitches} (-{(tabSwitches * TAB_SWITCH_PENALTY).toFixed(1)})
                       </span>
                     )}
                     <div className="flex items-center space-x-2">
                       <Timer
-                        className={`h-5 w-5 ${
-                          questionTimeLeft <= 5 ? "text-red-600" : "text-indigo-600"
-                        }`}
+                        className={`h-5 w-5 ${questionTimeLeft <= 5 ? "text-red-600" : "text-indigo-600"}`}
                       />
                       <span
-                        className={`font-mono font-bold text-xl ${
-                          questionTimeLeft <= 5
-                            ? "text-red-600 animate-pulse"
-                            : "text-gray-700"
-                        }`}
+                        className={`font-mono font-bold text-xl ${questionTimeLeft <= 5 ? "text-red-600 animate-pulse" : "text-gray-700"}`}
                       >
                         {questionTimeLeft}s
                       </span>
@@ -798,9 +721,7 @@
                 </div>
 
                 <div className="flex justify-between text-sm text-gray-600 mb-2">
-                  <span>
-                    Question {currentQuestion + 1} of {questions.length}
-                  </span>
+                  <span>Question {currentQuestion + 1} of {questions.length}</span>
                 </div>
 
                 <div className="w-full bg-gray-200 rounded-full h-2">
@@ -827,9 +748,7 @@
                         name={`question-${question.id}`}
                         value={option}
                         checked={answers[question.id] === option}
-                        onChange={(e) =>
-                          handleAnswerChange(question.id, e.target.value)
-                        }
+                        onChange={(e) => handleAnswerChange(question.id, e.target.value)}
                         className="mt-1 mr-3 h-4 w-4 text-indigo-600 flex-shrink-0"
                       />
                       <span className="text-gray-700">{option}</span>
@@ -846,9 +765,7 @@
                         : "bg-indigo-600 hover:bg-indigo-700"
                     } text-white`}
                   >
-                    {currentQuestion === questions.length - 1
-                      ? "Submit Quiz"
-                      : "Next Question"}
+                    {currentQuestion === questions.length - 1 ? "Submit Quiz" : "Next Question"}
                   </button>
                 </div>
               </div>
@@ -865,5 +782,4 @@
       root.render(<QuizApp />);
     </script>
   </body>
-
 </html>
